@@ -1,45 +1,52 @@
-# İçeri Aktar
+# Import
 from flask import Flask, render_template, request, send_from_directory
+
+
 
 
 app = Flask(__name__)
 
-# Form sonuçları 
+
+# Form results
 @app.route('/', methods=['GET','POST'])
 def index():
-    if request.method == 'POST':
-        # seçilen resmi almak
-        selected_image = request.form.get('image-selector')
+if request.method == 'POST':
+# retrieve selected image
+selected_image = request.form.get('image-selector')
 
-        # Görev #2. Metni almak
-        
 
-        # Görev #3. Metnin konumunu almak
-       
+# Task #2. Getting the text
 
-        # Görev #3. Metnin rengini almak
-        
 
-        return render_template('index.html', 
-                               # Seçilen resmi görüntüleme
-                               selected_image=selected_image, 
+# Task #3. Getting the position of the text
 
-                               # Görev #2. Metni görüntüleme
-                               
 
-                               # Görev #3. Rengi görüntüleme
-                               
-                               
-                               # Görev #3. Metnin konumunu görüntüleme
+# Task #3. Getting the colour of the text
 
-                               )
-    else:
-        # Varsayılan olarak ilk resmi görüntüleme
-        return render_template('index.html', selected_image='logo.svg')
+
+return render_template('index.html',
+# Display the selected image
+selected_image=selected_image,
+
+
+# Task #2. Display text
+
+
+# Task #3. Display colour
+# Task #3. Display the position of text
+
+
+)
+else:
+# Display the first image by default
+return render_template('index.html', selected_image='logo.svg')
+
+
 
 
 @app.route('/static/img/<path:path>')
 def serve_images(path):
-    return send_from_directory('static/img', path)
+return send_from_directory('static/img', path)
+
 
 app.run(debug=True)
